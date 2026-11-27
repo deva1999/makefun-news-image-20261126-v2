@@ -297,8 +297,12 @@ def main():
     draw.text((W - margin - 210, 1890), "Page 1 of 1 · The World",
               font=font(SANS, 17), fill=MUTED)
 
-    img.save("entry.png")
-    print("wrote entry.png", img.size)
+    # The competition gate accepts at most 1024x1024 pixels, so the
+    # full-size render is downscaled (keeping the exact 2000:1960
+    # proportions) before it is saved as the deliverable.
+    final = img.resize((1024, 1004), Image.LANCZOS)
+    final.save("entry.png")
+    print("wrote entry.png", final.size, "downscaled from", img.size)
 
 
 if __name__ == "__main__":

@@ -26,8 +26,8 @@ if (!isPng) {
 // IHDR width/height sit at bytes 16..24, big-endian.
 const width = bytes.readUInt32BE(16);
 const height = bytes.readUInt32BE(20);
-if (width !== 2000 || height !== 1960) {
-  throw new Error(`unexpected poster size ${width}x${height}, expected 2000x1960`);
+if (width !== 1024 || height !== 1004) {
+  throw new Error(`unexpected poster size ${width}x${height}, expected 1024x1004`);
 }
 
 copyFileSync(poster, join(outDir, 'entry.png'));
